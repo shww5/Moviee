@@ -1,0 +1,18 @@
+<div class="container">
+<h1>投稿編集</h1>
+
+<%= form_for (@movie) do |f| %>
+
+<h2>タイトル</h2>
+<a><%= f.text_field :title, value:@movie.title %></a>
+
+<h2>説明</h2>
+<a><%= f.text_area :about, value:@movie.about %></a>
+
+<h2>サムネイル</h2>
+<a><%= f.attachment_field :image %></a>
+
+<span><%= f.submit "変更する", class: "btn btn-primary" %></span>
+
+<% end %>
+</div>

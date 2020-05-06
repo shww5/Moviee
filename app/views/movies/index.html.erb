@@ -1,0 +1,10 @@
+<div class="container">
+<div class="item">
+  <% @movies.each do |movie| %>
+  <%= link_to movie_path(movie.id) do %>
+  <%= attachment_image_tag movie, :image, size:15*15 %>
+  <% end %>
+  <p><%= movie.title %></p>
+  <% end %>
+</div>
+</div>

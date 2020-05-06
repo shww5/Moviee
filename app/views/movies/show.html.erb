@@ -1,0 +1,8 @@
+
+<%= attachment_image_tag @movie, :image, size:15*15 %>
+<a><%= @movie.title %></a>
+<a><%= @movie.about %></a>
+<% if @movie.user == current_user %>
+  <%= link_to "編集する", edit_movie_path(@movie.id) %>
+  <%= link_to "削除する", movie_path(@movie), method: :delete %>
+<% end %>

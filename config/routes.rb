@@ -1,3 +1,14 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'movies#index'
+
+  devise_for :users
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+
+  resources :movies
+  resources :genres, only: [:new, :create, :index, :edit, :destroy]
+  resources :favorites, only: [:create, :destroy]
+  resources :comments
+
 end
