@@ -1,10 +1,30 @@
-<div class="container">
-<div class="item">
+<div class="containar">
+<div class="row">
+<div class="col-lg-3">
+
+<%= search_form_for @q do |f| %>
+  <%= f.label :title, "題名を検索" %>
+  <%= f.search_field :title_cont %>
+  <%= f.submit "検索" %>
+<% end %>
+</div>
+
+<a class="ranking-label">いいねランキング</a>
+<% @all_ranks.each.with_index(1) do |movie,i| %>
+<a class="ranking-label">第<%= i %>位</a>
+<%= link_to movie_path(movie.id) do %>
+<%= attachment_image_tag movie, :image, :fill, 200, 200 %>
+<% end %>
+<% end %>
+
   <% @movies.each do |movie| %>
-  <%= link_to movie_path(movie.id) do %>
-  <%= attachment_image_tag movie, :image, size:15*15 %>
-  <% end %>
-  <p><%= movie.title %></p>
+  <div class="col-md-3">
+  <div class="movie-image">
+  <%= attachment_image_tag movie,:image, :fill, 200, 200 %><br><br>
+  <%= movie.title %><br><br>
+  <%= link_to "もっと見る", movie_path(movie.id) %>
+  </div>
+  </div>
   <% end %>
 </div>
 </div>

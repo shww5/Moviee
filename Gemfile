@@ -71,6 +71,7 @@ gem 'activeadmin'
 gem 'rubocop-airbnb'
 gem 'pry-byebug'
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'ransack'
 
 gem 'dotenv-rails'
 group :production do

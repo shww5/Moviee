@@ -1,8 +1,63 @@
+<div class="container">
+<div class="movie-show">
+<br><br>
+<h1><%= @movie.title %></h1>
+<div class="movie-field">
+<%= attachment_image_tag @movie, :image, size:400 %>
+</div>
 
-<%= attachment_image_tag @movie, :image, size:15*15 %>
-<a><%= @movie.title %></a>
-<a><%= @movie.about %></a>
+
+<div class="movie-field">
+<a>みどころ:<%= @movie.about %></a><br>
+</div>
+
+<div class="movie-field">
+<a>ジャンル:<%= @movie.genre.name %></a><br>
+</div>
+
+<div class="movie-field">
+<% @movie.tag_list.each do |tag| %>
+  <span class="btn btn-primary"><%= tag %></span>
+<% end %>
+</span><br>
+</div>
+
+<div class="movie-field">
 <% if @movie.user == current_user %>
   <%= link_to "編集する", edit_movie_path(@movie.id) %>
   <%= link_to "削除する", movie_path(@movie), method: :delete %>
 <% end %>
+</div>
+
+<div class="movie-field">
+<% if @movie.favorited_by?(current_user) %>
+<%= link_to movie_favorites_path(@movie), method: :delete do %>
+<button class="btn btn-info btn-xs active"><i class="glyphicon glyphicon-heart"></i> いいね取り消し</button>
+<% end %>
+<%= @movie.favorites.count %> いいね
+<% else %>
+<%= link_to movie_favorites_path(@movie), method: :post do %>
+<button class="btn btn-info btn-xs active"><i class="glyphicon glyphicon-heart"></i> いいね</button>
+<% end %>
+<%= @movie.favorites.count %> いいね
+<% end %>
+</div>
+
+<div class="movie-field">
+<h2>コメント</h2><br>
+<% @movie.post_comments.each do |post_comment| %>
+<%= post_comment.user.name %>
+<%= post_comment.created_at.strftime('%Y/%m/%d') %>
+<%= post_comment.comment %><br>
+<% end %><br>
+<%= form_for [@movie, @post_comment] do |f| %>
+<%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+</div>
+
+<div class="movie-field">
+<%= f.submit "送信する", class: "button" %>
+<% end %>
+</div>
+<br>
+</div>
+</div>

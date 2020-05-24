@@ -1,16 +1,37 @@
 <div class="container">
+<div class="movie-form">
 <%= form_for(@movie) do |f| %>
- 
-    <h4>映画のタイトル</h4>
-    <%= f.text_field :title %>
- 
-    <h4>映画の説明</h4>
-    <%= f.text_area :about %>
- 
-    <h4>映画のサムネイル</h4>
-    <%= f.attachment_field :image %>
 
-    <%= f.submit '投稿' %>
- 
+    <div class="movie-field">
+    <br><br><br><br>
+    <h4>映画のタイトル</h4>
+    <%= f.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="movie-field">
+    <h4>映画のみどころ</h4>
+    <%= f.text_area :about, class: "form-control" %>
+    </div>
+
+    <div class="movie-field">
+    <h4>映画のサムネイル</h4><br>
+    <%= f.attachment_field :image %>
+    </div>
+
+    <div class="movie-field">
+    <h4>ジャンル</h4>
+    <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+    </div>
+
+    <div class="movie-field">
+    <h4>タグ(間をカンマで区切ってください)</h4>
+    <%= f.text_field :tag_list, value: @movie.tag_list.join(','), class: "form-control" %>
+    </div>
+    
+
+    <%= f.submit '投稿', class: "button" %>
+<br>
+<br>
 <% end %>
+</div>
 </div>

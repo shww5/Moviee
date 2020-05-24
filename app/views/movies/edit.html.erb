@@ -1,18 +1,33 @@
 <div class="container">
-<h1>投稿編集</h1>
+<div class="movie-form">
+<br><br><br><br>
+<h1>編集する</h1>
 
 <%= form_for (@movie) do |f| %>
 
-<h2>タイトル</h2>
-<a><%= f.text_field :title, value:@movie.title %></a>
+<div class="movie-field">
+<h2>映画のタイトル</h2>
+<a><%= f.text_field :title, value:@movie.title, class: "form-control" %></a>
+</div>
 
-<h2>説明</h2>
-<a><%= f.text_area :about, value:@movie.about %></a>
+<div class="movie-field">
+<h2>映画のみどころ</h2>
+<a><%= f.text_area :about, value:@movie.about, class: "form-control" %></a>
+</div>
 
-<h2>サムネイル</h2>
+<div class="movie-field">
+<h2>サムネイル(画像を変更する場合のみ)</h2>
 <a><%= f.attachment_field :image %></a>
+</div>
 
-<span><%= f.submit "変更する", class: "btn btn-primary" %></span>
+<div class="movie-field">
+<h2>タグ(間をカンマで区切ってください)</h2>
+  <%= f.label :tag_list, class: "sr-only control-label" %>
+  <%= text_field_tag 'movie[tag_list]', @movie.tag_list.join(","), class: "form-control" %>
+</div>
+
+<span><%= f.submit "変更する", class: "button" %></span>
 
 <% end %>
+</div>
 </div>
