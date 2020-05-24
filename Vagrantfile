@@ -6,18 +6,18 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
-    GUEST_RUBY_VERSION = '2.5.7'
-    config.vm.box = "centos/7"
-    config.vm.box_check_update = false
-    config.vm.network "forwarded_port", guest: 3000, host: 3000
-    config.vm.network "private_network", ip: "192.168.33.10"
-    config.vm.synced_folder "./", "/home/vagrant/work"
+  GUEST_RUBY_VERSION = '2.5.7'.freeze
+  config.vm.box = "centos/7"
+  config.vm.box_check_update = false
+  config.vm.network "forwarded_port", guest: 3000, host: 3000
+  config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.synced_folder "./", "/home/vagrant/work"
 
-    config.vm.provider "virtualbox" do |vb|
-        vb.gui = false
-    end
+  config.vm.provider "virtualbox" do |vb|
+    vb.gui = false
+  end
 
-    config.vm.provision "shell", inline: <<-SHELL
+  config.vm.provision "shell", inline: <<-SHELL
         sudo yum -y install gcc-c++
         sudo yum -y install gettext-devel openssl-devel readline-devel
         echo '### installing nodejs ###'
@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
         sudo yum install -y nodejs
     SHELL
 
-    config.vm.provision "shell", privileged: false, inline: <<-SHELL
+  config.vm.provision "shell", privileged: false, inline: <<-SHELL
         echo '### installing ImageMagick ###'
         sudo yum install -y openjpeg-devel libjpeg-turbo-devel libtiff-devel libgeotiff-devel libpng-devel giflib-devel libexif-devel libexif libwmf-devel libwmf libtool-ltdl-devel libtool-ltdl lcms-devel
         curl -OL https://www.imagemagick.org/download/releases/ImageMagick-7.0.8-68.tar.gz

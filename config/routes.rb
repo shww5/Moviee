@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   root 'top#about'
 
-
   devise_for :users
 
   devise_scope :user do
@@ -13,8 +12,6 @@ Rails.application.routes.draw do
 
   resources :movies do
     resource :favorites, only: [:create, :destroy]
-    resource :post_comments,only: [:create]
+    resource :post_comments, only: [:create]
   end
-
-
 end

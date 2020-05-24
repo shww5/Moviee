@@ -1,13 +1,15 @@
 class PostCommentsController < ApplicationController
-def create
-  movie = Movie.find(params[:movie_id])
-  comment = current_user.post_comments.new(post_comment_params)
-  comment.movie_id = movie.id
-  comment.save
-  redirect_to movie_path(movie)
-end
-private
-def post_comment_params
+  def create
+    movie = Movie.find(params[:movie_id])
+    comment = current_user.post_comments.new(post_comment_params)
+    comment.movie_id = movie.id
+    comment.save
+    redirect_to movie_path(movie)
+  end
+
+  private
+
+  def post_comment_params
     params.require(:post_comment).permit(:comment)
-end
+  end
 end

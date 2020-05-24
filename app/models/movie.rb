@@ -7,7 +7,7 @@ class Movie < ApplicationRecord
   belongs_to :genre
 
   def favorited_by?(user)
-      favorites.where(user_id: user.id).exists?
+    favorites.where(user_id: user.id).exists?
   end
 
   def self.create_all_ranks
@@ -15,5 +15,4 @@ class Movie < ApplicationRecord
     # Moveisとfavoritesを内部結合し,moview_idたんいでFavoritesが多い順に並べる
     Movie.joins(:favorites).group("favorites.movie_id").order("count(*) desc").limit(3)
   end
-
 end
