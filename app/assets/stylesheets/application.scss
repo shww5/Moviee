@@ -19,7 +19,7 @@
 
 body{
   padding-top: 100px;
-  background-color: BBBBBB;
+  background-color: #EEEEEE;
 }
 
 .col-lg-3{
@@ -32,6 +32,8 @@ body{
 }
 
 .box1{
+  border: solid;
+  border-color: #333333;
   background-color: whitesmoke;
   margin: auto;
   width: 700px;
@@ -104,6 +106,8 @@ body{
 }
 
 .col-md-3{
+  border: solid;
+  border-color: #333333;
   margin-top: 50px;
   margin-left: 100px;
   box-sizing: border-box;
@@ -123,4 +127,9 @@ body{
 
 .ranking-label{
   margin: 20px;
+}
+
+.ranking-image{
+  border: solid;
+  border-color: #333333;
 }

@@ -46,12 +46,12 @@
 <div class="movie-field">
 <h2>コメント</h2><br>
 <% @movie.post_comments.each do |post_comment| %>
-<%= post_comment.user.name %>
 <%= post_comment.created_at.strftime('%Y/%m/%d') %>
 <%= post_comment.comment %><br>
 <% end %><br>
 <%= form_for [@movie, @post_comment] do |f| %>
 <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+
 </div>
 
 <div class="movie-field">

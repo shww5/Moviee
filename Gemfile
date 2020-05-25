@@ -72,6 +72,10 @@ gem 'rubocop-airbnb'
 gem 'pry-byebug'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'ransack'
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano3-puma'
+gem 'capistrano-rbenv'
 
 gem 'dotenv-rails'
 group :production do

@@ -13,7 +13,9 @@
 <% @all_ranks.each.with_index(1) do |movie,i| %>
 <a class="ranking-label">第<%= i %>位</a>
 <%= link_to movie_path(movie.id) do %>
+<div class="ranking-image">
 <%= attachment_image_tag movie, :image, :fill, 200, 200 %>
+</div>
 <% end %>
 <% end %>
 
